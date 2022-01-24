@@ -10,9 +10,11 @@
 <h:body>
 		<h1>Projeto JSF</h1>
 		
-		<h:form>
-			<h:inputText></h:inputText>
-			<h:outputText value="Teste jsf"></h:outputText>
+		<h:form id="formPessoa">
+		
+			<h:inputText id="campoNome" value="#{pessoaBean.nome}"/><br/>
+			<h:outputText value="Teste jsf"/><br/>
+			<h:commandButton value="Botão" /><br/>
 		</h:form>
 </h:body>
 
