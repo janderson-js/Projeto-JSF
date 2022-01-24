@@ -13,9 +13,14 @@
 		<h:form id="formPessoa">
 		
 			<h:inputText id="campoNome" value="#{pessoaBean.nome}"/><br/>
-			<h:outputText value="Teste jsf"/><br/>
-			<h:commandButton value="Botão" /><br/>
+			<h:outputText value="Nome"/><br/>
+			<h:inputText id="campoSobreNome" value="#{pessoaBean.sobrenome}"/><br/>
+			<h:outputText value="SobreNome"/><br/>
+			<h:outputText value="#{pessoaBean.nomeCompleto}" /><br/>
+			<h:commandButton value="Botão" action="#{pessoaBean.mostrarNome}" /><br/>
+			
 		</h:form>
+		
 </h:body>
 
 </html>
