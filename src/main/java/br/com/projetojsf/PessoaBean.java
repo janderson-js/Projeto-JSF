@@ -1,10 +1,14 @@
 package br.com.projetojsf;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 @ManagedBean(name = "pessoaBean")
+@RequestScoped
 public class PessoaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -13,10 +17,21 @@ public class PessoaBean implements Serializable {
 	private String sobrenome;
 	private String nomeCompleto;
 
-	public String mostrarNome() {
-		nomeCompleto = nome + " " + sobrenome;
+	private List<String> nomes = new ArrayList<String>();
+
+	public String addNome() {
+		nomes.add(nome);
 		return "";
 	}
+
+	public List<String> getNomes() {
+		return nomes;
+	}
+
+	public void setNomes(List<String> nomes) {
+		this.nomes = nomes;
+	}
+
 
 	public String getNome() {
 		return nome;
