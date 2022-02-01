@@ -3,7 +3,21 @@
 	
 	<persistence-unit name="projeto-jsf">
 	
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		
 		<class>br.com.entidades.Pessoa</class>
+		
+		<properties>
+			<!-- Dados de conexão com o banco de dados -->
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/projeto-jsf"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+			<property name="javax.persistence.jdbc.username" value="postgres"/>
+			<property name="javax.persistence.jdbc.password" value="admin"/>
+			<property name="hibernate.show.sql" value="true"/>
+			<property name="hibernate.format_sql" value="true"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+		</properties>
 	
 	</persistence-unit>
 </persistence>

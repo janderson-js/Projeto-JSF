@@ -16,6 +16,8 @@ public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	// Atributos
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -28,6 +30,8 @@ public class Pessoa implements Serializable {
 	
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
+	
+	// Metodos
 	
 	public Pessoa() {}
 
@@ -87,6 +91,5 @@ public class Pessoa implements Serializable {
 		Pessoa other = (Pessoa) obj;
 		return Objects.equals(id, other.id);
 	}
-	
 	
 }
