@@ -12,5 +12,5 @@
     		<to-view-id>/navegacao_explicita.jsf</to-view-id>
     	</navigation-case> 
     </navigation-rule>
-
+ 
 </faces-config>
