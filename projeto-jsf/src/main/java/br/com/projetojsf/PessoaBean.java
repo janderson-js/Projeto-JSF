@@ -31,6 +31,17 @@ public class PessoaBean implements Serializable {
 		return "";
 	}
 	
+	public String deletar() {
+		daoGeneric.delete(pessoa);
+		return "";
+	}
+	
+	public String deletarPorId() {
+		daoGeneric.deletarPorId(pessoa);
+		pessoa = new Pessoa();
+		return "";
+	}
+	
 	public Pessoa getPessoa() {
 		return pessoa;
 	}

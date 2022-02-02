@@ -34,5 +34,28 @@ public class DAOGeneric<E> implements Serializable {
 		
 		return retorno;
 	}
+	
+	public void delete(E entidade) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+		
+		entityManager.remove(entidade);
+		
+		transaction.commit();
+		entityManager.close();
+	}
+	
+	public void deletarPorId(E entidade) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+		
+		Object id = JPAUtil.getPrimaryKey(entidade);
+		entityManager.createQuery("delete from "+ entidade.getClass().getCanonicalName() + " where id = "+ id).executeUpdate();
+		
+		transaction.commit();
+		entityManager.close();
+	}
 
 }

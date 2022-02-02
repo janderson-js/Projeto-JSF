@@ -38,8 +38,11 @@
 				</tr>
 			 -->
 			<tr>
-				<td><h:commandButton value="Salvar" action="#{pessoaBean.salvar}" /></td>
-				<td><h:commandButton value="Novo" action="#{pessoaBean.novo}" /></td>
+				<td >
+					<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" /> 
+					<h:commandButton value="Novo" action="#{pessoaBean.novo}" />
+				</td>
+				<td><h:commandButton value="Remover" action="#{pessoaBean.deletarPorId}" /></td>
 			</tr>
 		</table>
 	</h:form>
