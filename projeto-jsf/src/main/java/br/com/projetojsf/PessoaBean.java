@@ -3,14 +3,14 @@ package br.com.projetojsf;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 import br.com.dao.DAOGeneric;
 import br.com.entidades.Pessoa;
 
 @ManagedBean(name = "pessoaBean")
-@RequestScoped
-//@ViewScoped
+//@RequestScoped
+@ViewScoped
 //@SessionScoped
 //@ApplicationScoped
 public class PessoaBean implements Serializable {
@@ -23,6 +23,7 @@ public class PessoaBean implements Serializable {
 	
 	public String salvar() {
 		daoGeneric.salvar(pessoa);
+		pessoa = new Pessoa();
 		return "";
 	}
 
