@@ -13,11 +13,15 @@
 	<h:form id="formPessoa">
 		<table>
 			<tr>
+				<td><h:outputLabel for="id" value="ID: " /></td>
+				<td><h:inputText id="id" value="#{pessoaBean.pessoa.id}" readonly="true" /></td>
+			</tr>
+			<tr>
 				<td><h:outputLabel for="nome" value="Nome: " /></td>
 				<td><h:inputText id="nome" value="#{pessoaBean.pessoa.nome}" /></td>
 			</tr>
 			<tr>
-				<td><h:outputLabel for="sobreNome" value="SobreNome: " /></td>
+				<td><h:outputLabel for="sobreNome" value="Sobrenome: " /></td>
 				<td><h:inputText id="sobreNome"
 						value="#{pessoaBean.pessoa.sobreNome}" /></td>
 			</tr>
@@ -34,8 +38,8 @@
 				</tr>
 			 -->
 			<tr>
-				<td><h:commandButton value="Salvar"
-						action="#{pessoaBean.salvar}" /></td>
+				<td><h:commandButton value="Salvar" action="#{pessoaBean.salvar}" /></td>
+				<td><h:commandButton value="Novo" action="#{pessoaBean.novo}" /></td>
 			</tr>
 		</table>
 	</h:form>

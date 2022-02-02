@@ -21,5 +21,18 @@ public class DAOGeneric<E> implements Serializable {
 		transaction.commit();
 		entityManager.close();
 	}
+	
+	public E merge(E entidade) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+		
+		E retorno = entityManager.merge(entidade);
+		
+		transaction.commit();
+		entityManager.close();
+		
+		return retorno;
+	}
 
 }
