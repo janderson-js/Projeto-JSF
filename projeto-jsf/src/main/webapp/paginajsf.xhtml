@@ -45,6 +45,23 @@
 				<td><h:commandButton value="Remover" action="#{pessoaBean.deletarPorId}" /></td>
 			</tr>
 		</table>
+		
+		<h2>Tabela de Usuários</h2>
+		
+		<h:dataTable value="#{pessoaBean.pessoas}" var="p">
+			<h:column>
+				<h:outputText value="#{p.id}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{p.nome}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{p.sobreNome}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{p.sobreNome}" />
+			</h:column>
+		</h:dataTable>
 	</h:form>
 </h:body>
 

@@ -1,6 +1,7 @@
 package br.com.dao;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -10,6 +11,7 @@ import br.com.jpautil.JPAUtil;
 public class DAOGeneric<E> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
 	
 	public void salvar(E entidade) {
 		EntityManager entityManager = JPAUtil.getEntityManager();
@@ -56,6 +58,19 @@ public class DAOGeneric<E> implements Serializable {
 		
 		transaction.commit();
 		entityManager.close();
+	}
+	
+	public List<E> getListEntity(E entidade) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+		
+		List<E> retorno = entityManager.createQuery("from "+ entidade.getClass().getCanonicalName()).getResultList();
+		
+		transaction.commit();
+		entityManager.close();
+		
+		return retorno;
 	}
 
 }
