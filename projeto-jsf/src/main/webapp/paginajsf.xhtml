@@ -12,43 +12,33 @@
 	<h1>Projeto JSF</h1>
 
 	<h:form id="formPessoa">
-		<table>
-			<tbody>
-				<tr>
-					<td><h:outputLabel for="id" value="ID: " /></td>
-					<td><h:inputText id="id" value="#{pessoaBean.pessoa.id}"
-							readonly="true" /></td>
-				</tr>
-				<tr>
-					<td><h:outputLabel for="nome" value="Nome: " /></td>
-					<td><h:inputText id="nome" value="#{pessoaBean.pessoa.nome}" /></td>
-				</tr>
-				<tr>
-					<td><h:outputLabel for="sobreNome" value="Sobrenome: " /></td>
-					<td><h:inputText id="sobreNome"
-							value="#{pessoaBean.pessoa.sobreNome}" /></td>
-				</tr>
-				<tr>
-					<td><h:outputLabel for="idade" value="Idade: " /></td>
-					<td><h:inputText id="idade" value="#{pessoaBean.pessoa.idade}" /></td>
-				</tr>
-				<!-- 
-				<tr>
-				<td><h:outputLabel for="dataNascimento"
-						value="Data de Nascimento: " /></td>
-				<td><h:inputText id="dataNascimento"
-						value="#{pessoaBean.pessoa.dataNascimento}" /></td>
-				</tr>
-			 -->
-				<tr>
-					<td><h:commandButton value="Salvar"
-							action="#{pessoaBean.salvar}" /> <h:commandButton value="Novo"
-							action="#{pessoaBean.novo}" /></td>
-					<td><h:commandButton value="Remover"
-							action="#{pessoaBean.deletarPorId}" /></td>
-				</tr>
-			</tbody>
-		</table>
+		
+		<h:panelGrid columns="2">
+			<f:facet name="header">
+				<h:outputText value="Cadastro em JSF" />
+			</f:facet>
+			
+			<h:outputLabel for="id" value="ID: " />
+			<h:inputText id="id" value="#{pessoaBean.pessoa.id}" readonly="true" />
+			
+			<h:outputLabel for="nome" value="Nome: " />
+			<h:inputText id="nome" value="#{pessoaBean.pessoa.nome}" />
+			
+			<h:outputLabel for="sobreNome" value="Sobrenome: " />
+			<h:inputText id="sobreNome" value="#{pessoaBean.pessoa.sobreNome}" />
+			
+			<h:outputLabel for="idade" value="Idade: " />
+			<h:inputText id="idade" value="#{pessoaBean.pessoa.idade}" />
+			
+			<h:outputLabel/>
+			<h:panelGroup>
+				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" />
+				<h:commandButton value="Novo" action="#{pessoaBean.novo}" />
+				<h:commandButton value="Remover" action="#{pessoaBean.deletarPorId}" />
+			</h:panelGroup>
+		
+		</h:panelGrid>
+		
 
 		<h2>Tabela de Usuários</h2>
 		<h:dataTable value="#{pessoaBean.pessoas}" var="p">
