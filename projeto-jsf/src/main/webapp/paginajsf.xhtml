@@ -31,7 +31,7 @@
 			<h:inputText id="idade" value="#{pessoaBean.pessoa.idade}" />
 			
 			<h:outputLabel/>
-			<h:panelGroup>
+			<h:panelGroup style="display:flex;justify-content:space-between;">
 				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" />
 				<h:commandButton value="Novo" action="#{pessoaBean.novo}" />
 				<h:commandButton value="Remover" action="#{pessoaBean.deletarPorId}" />
@@ -39,25 +39,31 @@
 		
 		</h:panelGrid>
 		
-
-		<h2>Tabela de Usuários</h2>
-		<h:dataTable value="#{pessoaBean.pessoas}" var="p">
+		<h2></h2>
+		
+		<h:dataTable value="#{pessoaBean.pessoas}" var="p" style="border-spacing: 10px; cellpadding:6px;">
+			<f:facet name="header">
+				Tabela de Usuários
+			</f:facet>
 			<h:column>
+				<f:facet name="header">ID</f:facet>
 				<h:outputText value="#{p.id}" />
 			</h:column>
 			<h:column>
+				<f:facet name="header">NOME</f:facet>
 				<h:outputText value="#{p.nome}" />
 			</h:column>
 			<h:column>
+			  	<f:facet name="header">SOBRENOME</f:facet>
 				<h:outputText value="#{p.sobreNome}" />
 			</h:column>
 			<h:column>
-				<h:commandLink value="Editar">
+				<f:facet name="header">AÇÃO</f:facet>
+				<h:commandLink value="Editar" style="margin: 10px;">
 					<f:setPropertyActionListener value="#{p}"
 						target="#{pessoaBean.pessoa}" />
 				</h:commandLink>
-			</h:column>
-			<h:column>
+			
 				<h:commandLink value="Excluir" action="#{pessoaBean.deletarPorId}">
 					<f:setPropertyActionListener value="#{p}"
 						target="#{pessoaBean.pessoa}" />
