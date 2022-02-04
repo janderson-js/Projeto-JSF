@@ -35,6 +35,13 @@
 			<h:outputLabel for="idade" value="Idade: " />
 			<h:inputText id="idade" value="#{pessoaBean.pessoa.idade}" />
 			
+			<h:outputText for="sexo" value="Sexo:" />
+			<h:selectOneMenu value="#{pessoaBean.pessoa.sexo}" required="true">
+				<f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
+				<f:selectItem itemValue="MASCULINO" itemLabel="Masculino" />
+				<f:selectItem itemValue="FEMININO" itemLabel="Feminino" />
+			</h:selectOneMenu>
+			
 			<h:outputLabel/>
 			<h:panelGroup style="display:flex;justify-content:space-between;">
 				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" />
