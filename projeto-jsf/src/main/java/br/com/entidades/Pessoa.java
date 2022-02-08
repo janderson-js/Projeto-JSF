@@ -32,6 +32,8 @@ public class Pessoa implements Serializable {
 	
 	private String[] fremeWork;
 	
+	private Boolean ativo;
+	
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 	
@@ -85,6 +87,14 @@ public class Pessoa implements Serializable {
 
 	public void setFremeWork(String[] fremeWork) {
 		this.fremeWork = fremeWork;
+	}
+	
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 
 	public String getSexo() {

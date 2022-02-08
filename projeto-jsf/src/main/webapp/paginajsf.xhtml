@@ -51,6 +51,9 @@
 				<f:selectItem itemValue="JSF" />
 			</h:selectManyCheckbox>
 			
+			<h:outputLabel for="booleanBox" value="Ativo"/>
+			<h:selectBooleanCheckbox id="booleanBox" value="#{pessoaBean.pessoa.ativo}" />
+			
 			<h:outputLabel/>
 			<h:panelGroup style="display:flex;justify-content:space-between;">
 				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" />
