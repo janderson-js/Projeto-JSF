@@ -55,10 +55,11 @@
 			<h:selectBooleanCheckbox id="booleanBox" value="#{pessoaBean.pessoa.ativo}" />
 			
 			<h:outputLabel/>
-			<h:panelGroup style="display:flex;justify-content:space-between;">
+			<h:panelGroup style="display:flex;justify-content:flex-start;">
 				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" />
 				<h:commandButton value="Novo" action="#{pessoaBean.novo}" />
 				<h:commandButton value="Remover" action="#{pessoaBean.deletarPorId}" />
+				<h:commandButton value="limpar" type="reset" />
 			</h:panelGroup>
 		
 		</h:panelGrid>
