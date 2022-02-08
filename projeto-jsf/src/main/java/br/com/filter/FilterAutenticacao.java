@@ -12,9 +12,9 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import br.com.entidades.Pessoa;
 import br.com.jpautil.JPAUtil;
 
 @WebFilter(urlPatterns = {"/*"})
@@ -28,14 +28,13 @@ public class FilterAutenticacao implements Filter  {
 			FilterChain chain) throws IOException, ServletException {
 			
 			HttpServletRequest req = (HttpServletRequest) request;
-			HttpServletResponse resp = (HttpServletResponse) response;
+			//HttpServletResponse resp = (HttpServletResponse) response;
 			HttpSession session = req.getSession();
 			
-			String usuarioLogado = (String) session.getAttribute("usuarioLogado");
+			Pessoa usuarioLogado = (Pessoa) session.getAttribute("usuarioLogado");
 			String url = req.getServletPath();
 		
-			if(!url.equalsIgnoreCase("index.jsf") && usuarioLogado == null || 
-					(usuarioLogado != null &&  usuarioLogado.trim().isEmpty())) {
+			if(!url.equalsIgnoreCase("index.jsf") && usuarioLogado == null) {
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsf");
 				
