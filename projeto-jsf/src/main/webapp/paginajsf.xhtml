@@ -20,7 +20,7 @@
 		
 		<h:panelGrid columns="2">
 			<f:facet name="header">
-				<h:outputText value="Cadastro em JSF" />
+				<h:outputText value="Cadastro de Usuários" />
 			</f:facet>
 			
 			<h:outputLabel for="id" value="ID: " />
@@ -51,6 +51,20 @@
 				<f:selectItem itemValue="JSF" />
 			</h:selectManyCheckbox>
 			
+			<h:outputLabel for="perfil" value="Perfil" />
+			<h:selectOneMenu id="perfil" value="#{pessoaBean.pessoa.perfilUser}" required="false">
+				<f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
+				<f:selectItem itemValue="ADMINISTRADOR" itemLabel="Administrador" />
+				<f:selectItem itemValue="SECRETÁRIO(A)" itemLabel="Secretário(a)" />
+				<f:selectItem itemValue="RECEPCIONISTA" itemLabel="Recepcionista" />
+			</h:selectOneMenu>
+			
+			<h:outputLabel for="login" value="Login"/>
+			<h:inputText id="login" value="#{pessoaBean.pessoa.login}" />
+			
+			<h:outputLabel for="senha" value="Senha"/>
+			<h:inputSecret id="senha" value="#{pessoaBean.pessoa.senha}" />
+			
 			<h:outputLabel for="booleanBox" value="Ativo"/>
 			<h:selectBooleanCheckbox id="booleanBox" value="#{pessoaBean.pessoa.ativo}" />
 			
@@ -68,7 +82,7 @@
 		
 		<h:dataTable value="#{pessoaBean.pessoas}" var="p" style="border-spacing: 10px; cellpadding:6px;">
 			<f:facet name="header">
-				Tabela de Usuários
+				Tabela de Usuários Cadastrados
 			</f:facet>
 			<h:column>
 				<f:facet name="header">ID</f:facet>
