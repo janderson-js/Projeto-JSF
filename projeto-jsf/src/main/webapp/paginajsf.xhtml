@@ -17,9 +17,9 @@
 	</h:panelGrid>
 	
 	<h:form style="margin-bottom:40px;">
-		<h:commandLink value="Administração" action="lancamento" style="margin-left:1cm;" />
-		<h:commandLink value="lancamento" action="paginajsf" style="margin-left:1cm;" />
-		<h:commandLink value="Troca de Usuário" action="index" style="margin-left:1cm;" />
+		<h:commandLink value="Administração" action="paginajsf?faces-redirect=true" style="margin-left:1cm;" />
+		<h:commandLink value="lancamento" action="lancamento?faces-redirect=true" style="margin-left:1cm;" />
+		<h:commandLink value="Troca de Usuário" action="index?faces-redirect=true" style="margin-left:1cm;" />
 	</h:form>
 
 	<h:form rendered="#{pessoaBean.permintirAcesso('administrador')}" id="formPessoa" style="margin-bottom:80px;">
@@ -86,7 +86,7 @@
 		
 		<h2></h2>
 		
-		<h:dataTable rendered="#{pessoaBean.permintirAcesso('administrador')}" value="#{pessoaBean.pessoas}" var="p" style="border-spacing: 10px; cellpadding:6px;">
+		<h:dataTable rendered="#{pessoaBean.permintirAcesso('administrador')}" value="#{pessoaBean.pessoas}" var="p" style="border-spacing: 10px; cellpadding:6px;text-align:center;">
 			<f:facet name="header">
 				Tabela de Usuários Cadastrados
 			</f:facet>

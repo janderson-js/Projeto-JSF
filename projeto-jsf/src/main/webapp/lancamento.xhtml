@@ -11,17 +11,83 @@
 </h:head>
 
 <h:body>
-		<div style="width: 100vw; height: 100vh; justify-content: center;align-items: center;display: flex;flex-direction: column; ">
-			<h1>Olá, Projeto JSF</h1>
+	<h:panelGrid columns="2">
+			<h:graphicImage  height="50" width="50" library="img" name="teste.png" />
 			
-			<h:form id="formLancamento" style="">
-				<h:panelGrid columns="2">
-					
-				</h:panelGrid>
-			</h:form>
+			<h1>Projeto JSF</h1>
+	</h:panelGrid>
+	
+	<h:form style="margin-bottom:40px;">
+		<h:commandLink value="Administração" action="paginajsf?faces-redirect=true" style="margin-left:1cm;" />
+		<h:commandLink value="lancamento" action="lancamento?faces-redirect=true" style="margin-left:1cm;" />
+		<h:commandLink value="Troca de Usuário" action="index?faces-redirect=true" style="margin-left:1cm;" />
+	</h:form>
+	
+	<h:form id="formLancamento" style="">
+		<h:panelGrid columns="2">
+			<f:facet name="header">
+				<h:outputLabel value="Cadastro de Lançamento" />
+			</f:facet>
 			
-		</div>
+			<h:outputLabel for="id" value="ID: " />
+			<h:inputText id="id" value="#{lancamento.lacamento.id}" readonly="true" />
+			
+			<h:outputLabel for="notaFiscal" value="Nota Físcal: " />
+			<h:inputText id="notaFiscal" value="#{lancamento.lacamento.numeroNotaFiscal}" />
+			
+			<h:outputLabel for="empresaOrigem" value="Empresa de Origem: " />
+			<h:inputText id="empresaOrigem" value="#{lancamento.lacamento.empresaOrigem}"  />
+			
+			<h:outputLabel for="empresaDestino" value="Empresa de destino " />
+			<h:inputText id="empresaDestino" value="#{lancamento.lacamento.empresaDestino}" />
+			
+			<h:outputLabel/>
+			<h:panelGroup style="display:flex;justify-content:flex-start;">
+				<h:commandButton value="Salvar" action="#{lancamento.salvar}" title="Salvar"  image="/resources/img/salvar.png"  />
+				<h:commandButton value="Novo" action="#{lancamento.novo}" title="Novo"  image="/resources/img/novo.png" />
+				<h:commandButton value="Remover" action="#{lancamento.deletarPorId}" title="Remover" image="/resources/img/delete.png"  />
+				<h:commandButton value="limpar" type="reset" title="Limpar campos" image="/resources/img/limpar.png" />
+			</h:panelGroup>
+		</h:panelGrid>
 		
+		<h2></h2>
+		
+		<h:dataTable rendered="#{pessoaBean.permintirAcesso('administrador')}" value="#{lancamento.lacamentos}" var="l" style="border-spacing: 10px; cellpadding:6px; text-align:center;">
+			<f:facet name="header">
+				Tabela de Lançamentos Cadastrados
+			</f:facet>
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{l.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">NOTA FÍSCAL</f:facet>
+				<h:outputText value="#{l.numeroNotaFiscal}" />
+			</h:column>
+			<h:column>
+			  	<f:facet name="header">EMPRESA ORIGEM</f:facet>
+				<h:outputText value="#{l.empresaOrigem}" />
+			</h:column>
+			<h:column>
+			  	<f:facet name="header">EMPRESA DESTINO</f:facet>
+				<h:outputText value="#{l.empresaDestino}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">AÇÃO</f:facet>
+				<h:commandLink  style="margin: 10px;">
+					<f:setPropertyActionListener value="#{l}"
+						target="#{lancamento.lacamento}"  />
+					<h:graphicImage library="img" name="editar.png" title="Editar" />
+				</h:commandLink>
+			
+				<h:commandLink  action="#{lancamento.deletarPorId}">
+					<f:setPropertyActionListener value="#{p}"
+						target="#{lancamento.lacamento}" />
+						<h:graphicImage library="img" name="deletar.png" title="Excluir" />
+				</h:commandLink>
+			</h:column>
+		</h:dataTable>
+ 	</h:form>
 </h:body>
 
 </html>
