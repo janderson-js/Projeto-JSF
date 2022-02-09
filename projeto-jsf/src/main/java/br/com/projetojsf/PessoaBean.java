@@ -92,5 +92,15 @@ public class PessoaBean implements Serializable {
 		}
 		return "index.jsf";
 	}
+	
+	public Boolean permintirAcesso(String acesso) {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = context.getExternalContext();
+		
+		Pessoa pessoaUser = (Pessoa) externalContext.getSessionMap().get("usuarioLogado");
+		
+		return pessoaUser.getPerfilUser().equalsIgnoreCase(acesso);
+	}
 }
 
