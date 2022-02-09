@@ -15,8 +15,14 @@
 			
 			<h1>Projeto JSF</h1>
 	</h:panelGrid>
+	
+	<h:form style="margin-bottom:40px;">
+		<h:commandLink value="Administração" action="lancamento" style="margin-left:1cm;" />
+		<h:commandLink value="lancamento" action="paginajsf" style="margin-left:1cm;" />
+		<h:commandLink value="Troca de Usuário" action="index" style="margin-left:1cm;" />
+	</h:form>
 
-	<h:form id="formPessoa">
+	<h:form rendered="#{pessoaBean.permintirAcesso('administrador')}" id="formPessoa" style="margin-bottom:80px;">
 		
 		<h:panelGrid columns="2">
 			<f:facet name="header">
@@ -80,7 +86,7 @@
 		
 		<h2></h2>
 		
-		<h:dataTable value="#{pessoaBean.pessoas}" var="p" style="border-spacing: 10px; cellpadding:6px;">
+		<h:dataTable rendered="#{pessoaBean.permintirAcesso('administrador')}" value="#{pessoaBean.pessoas}" var="p" style="border-spacing: 10px; cellpadding:6px;">
 			<f:facet name="header">
 				Tabela de Usuários Cadastrados
 			</f:facet>
