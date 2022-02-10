@@ -68,6 +68,16 @@
 				<f:selectItem itemValue="EXPECIALISTA" itemLabel="Expecialista" />
 			</h:selectOneRadio>
 			
+			<h:outputLabel for="linguagem" value="Linguagens"/>
+			<h:selectManyCheckbox id="linguagem" layout="pageDirection"
+			 value="#{pessoaBean.pessoa.linguagens}" required="false"> 
+				<f:selectItem itemValue="Java" />
+				<f:selectItem itemValue="Pyton" />
+				<f:selectItem itemValue="c/c++" />
+				<f:selectItem itemValue="PHP" />
+				<f:selectItem itemValue="C#" />
+			</h:selectManyCheckbox>
+			
 			<h:outputLabel for="perfil" value="Perfil" />
 			<h:selectOneMenu id="perfil" value="#{pessoaBean.pessoa.perfilUser}" required="false">
 				<f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />

@@ -40,12 +40,14 @@ public class Pessoa implements Serializable {
 	
 	private String nivelProgramador;
 	
+	private String[] linguagens;
+	
 	private Boolean ativo;
 	
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 	
-	// Metodos
+	// MetodosS
 	
 	public Pessoa() {}
 
@@ -143,6 +145,14 @@ public class Pessoa implements Serializable {
 
 	public void setNivelProgramador(String nivelProgramador) {
 		this.nivelProgramador = nivelProgramador;
+	}
+	
+	public String[] getLinguagens() {
+		return linguagens;
+	}
+
+	public void setLinguagens(String[] linguagens) {
+		this.linguagens = linguagens;
 	}
 
 	@Override
