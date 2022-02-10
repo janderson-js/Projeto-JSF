@@ -16,12 +16,15 @@
 			<h1>Projeto JSF</h1>
 	</h:panelGrid>
 	
+	
 	<h:form style="margin-bottom:40px;">
 		<h:commandLink rendered="#{pessoaBean.permintirAcesso('administrador')}" value="Administração" action="paginajsf?faces-redirect=true" style="margin-left:1cm;" />
 		<h:commandLink value="lancamento" action="lancamento?faces-redirect=true" style="margin-left:1cm;" />
 		<h:commandLink value="Troca de Usuário" action="index?faces-redirect=true" style="margin-left:1cm;" />
 	</h:form>
-
+	
+	<h:outputLabel style="margin-bottom:40px;" value="Usuário logado: #{sessionScope['usuarioLogado'].nome} #{sessionScope['usuarioLogado'].sobreNome}" />
+	
 	<h:form rendered="#{pessoaBean.permintirAcesso('administrador')}" id="formPessoa" style="margin-bottom:80px;">
 		
 		<h:panelGrid columns="2">
@@ -42,20 +45,28 @@
 			<h:inputText id="idade" value="#{pessoaBean.pessoa.idade}" />
 			
 			<h:outputText for="sexo" value="Sexo:" />
-			<h:selectOneMenu id="sexo" value="#{pessoaBean.pessoa.sexo}" required="false">
-				<f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
+			<h:selectOneRadio id="sexo" value="#{pessoaBean.pessoa.sexo}" >
 				<f:selectItem itemValue="MASCULINO" itemLabel="Masculino" />
 				<f:selectItem itemValue="FEMININO" itemLabel="Feminino" />
-			</h:selectOneMenu>
+			</h:selectOneRadio>
 			
 			<h:outputLabel for="comboBox" value="FrameWorks"/>
-			<h:selectManyCheckbox id="comboBox" value="#{pessoaBean.pessoa.fremeWork}" required="false">
+			<h:selectManyCheckbox id="comboBox" layout="pageDirection"
+			 value="#{pessoaBean.pessoa.fremeWork}" required="false">
 				<f:selectItem itemValue="Hibernate" />
 				<f:selectItem itemValue="Spring MVC" />
 				<f:selectItem itemValue="JPA" />
 				<f:selectItem itemValue="PrimeFaces" />
 				<f:selectItem itemValue="JSF" />
 			</h:selectManyCheckbox>
+			
+			<h:outputText for="nivel" value="Programador"  />
+			<h:selectOneRadio id="nivel" value="#{pessoaBean.pessoa.nivelProgramador}" layout="pageDirection" >
+				<f:selectItem itemValue="JUNIOR" itemLabel="Junior" />
+				<f:selectItem itemValue="PLENO" itemLabel="Pleno" />
+				<f:selectItem itemValue="SÊNIOR" itemLabel="Sênior" />
+				<f:selectItem itemValue="EXPECIALISTA" itemLabel="Expecialista" />
+			</h:selectOneRadio>
 			
 			<h:outputLabel for="perfil" value="Perfil" />
 			<h:selectOneMenu id="perfil" value="#{pessoaBean.pessoa.perfilUser}" required="false">

@@ -102,5 +102,6 @@ public class PessoaBean implements Serializable {
 		
 		return pessoaUser.getPerfilUser().equalsIgnoreCase(acesso);
 	}
+	
 }
 

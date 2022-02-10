@@ -68,6 +68,8 @@ public class LancamentoBean {
 		lancamentos = idaoLancamento.consultar(pessoaUser.getId());
 	}
 	
+	
+	
 	public Lancamento getLancamento() {
 		return lancamento;
 	}

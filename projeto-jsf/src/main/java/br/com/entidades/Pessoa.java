@@ -38,6 +38,8 @@ public class Pessoa implements Serializable {
 	
 	private String[] fremeWork;
 	
+	private String nivelProgramador;
+	
 	private Boolean ativo;
 	
 	@Temporal(TemporalType.DATE)
@@ -133,6 +135,14 @@ public class Pessoa implements Serializable {
 
 	public void setPerfilUser(String perfilUser) {
 		this.perfilUser = perfilUser;
+	}
+
+	public String getNivelProgramador() {
+		return nivelProgramador;
+	}
+
+	public void setNivelProgramador(String nivelProgramador) {
+		this.nivelProgramador = nivelProgramador;
 	}
 
 	@Override

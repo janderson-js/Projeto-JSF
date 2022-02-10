@@ -65,7 +65,7 @@ public class DAOGeneric<E> implements Serializable {
 		EntityTransaction transaction = entityManager.getTransaction();
 		transaction.begin();
 		
-		List<E> retorno = entityManager.createQuery("from "+ entidade.getClass().getCanonicalName()).getResultList();
+		List<E> retorno = entityManager.createQuery("from "+ entidade.getClass().getCanonicalName()+ " order by id").getResultList() ;
 		
 		transaction.commit();
 		entityManager.close();
