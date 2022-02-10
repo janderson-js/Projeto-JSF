@@ -65,12 +65,16 @@
 				<h:outputText value="#{l.numeroNotaFiscal}" />
 			</h:column>
 			<h:column>
-			  	<f:facet name="header">EMPRESA ORIGEM</f:facet>
+			  	<f:facet name="header">ORIGEM</f:facet>
 				<h:outputText value="#{l.empresaOrigem}" />
 			</h:column>
 			<h:column>
-			  	<f:facet name="header">EMPRESA DESTINO</f:facet>
+			  	<f:facet name="header">DESTINO</f:facet>
 				<h:outputText value="#{l.empresaDestino}" />
+			</h:column>
+			<h:column>
+			  	<f:facet name="header">USUÁRIO</f:facet>
+				<h:outputText value="#{l.usuario.nome}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">AÇÃO</f:facet>
