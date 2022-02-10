@@ -16,12 +16,12 @@ import br.com.repository.IDAOLancamento;
 import br.com.repository.IDAOLancamentoImpl;
 
 @ViewScoped
-@ManagedBean(name = "lancamento")
+@ManagedBean(name = "lancamentoBean")
 public class LancamentoBean {
 	
 	private Lancamento lancamento = new Lancamento();
 	private DAOGeneric<Lancamento> daoGeneric = new DAOGeneric<Lancamento>();
-	private List<Lancamento> lacamentos = new ArrayList<Lancamento>();
+	private List<Lancamento> lancamentos = new ArrayList<Lancamento>();
 	private IDAOLancamento idaoLancamento = new IDAOLancamentoImpl();
 	
 	
@@ -33,9 +33,7 @@ public class LancamentoBean {
 		Pessoa pessoaUser = (Pessoa) externalContext.getSessionMap().get("usuarioLogado");
 		
 		lancamento.setUsuario(pessoaUser);
-		daoGeneric.merge(lancamento);
-		
-		lancamento = new Lancamento();
+		lancamento = daoGeneric.merge(lancamento);
 		
 		return"";
 	}
@@ -67,14 +65,14 @@ public class LancamentoBean {
 		
 		Pessoa pessoaUser = (Pessoa) externalContext.getSessionMap().get("usuarioLogado");
 		
-		lacamentos = idaoLancamento.consultar(pessoaUser.getId());
+		lancamentos = idaoLancamento.consultar(pessoaUser.getId());
 	}
 	
-	public Lancamento getLacamento() {
+	public Lancamento getLancamento() {
 		return lancamento;
 	}
-	public void setLacamento(Lancamento lacamento) {
-		this.lancamento = lacamento;
+	public void setLancamento(Lancamento lancamento) {
+		this.lancamento = lancamento;
 	}
 	public DAOGeneric<Lancamento> getDaoGeneric() {
 		return daoGeneric;
@@ -82,11 +80,11 @@ public class LancamentoBean {
 	public void setDaoGeneric(DAOGeneric<Lancamento> daoGeneric) {
 		this.daoGeneric = daoGeneric;
 	}
-	public List<Lancamento> getLacamentos() {
-		return lacamentos;
+	public List<Lancamento> getLancamentos() {
+		return lancamentos;
 	}
-	public void setLacamentos(List<Lancamento> lacamentos) {
-		this.lacamentos = lacamentos;
+	public void setLancamentos(List<Lancamento> lancamentos) {
+		this.lancamentos = lancamentos;
 	}
 	
 	
