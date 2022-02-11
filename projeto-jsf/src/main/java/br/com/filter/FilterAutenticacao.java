@@ -27,7 +27,7 @@ public class FilterAutenticacao implements Filter  {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 			
-			try {
+			 
 				HttpServletRequest req = (HttpServletRequest) request;
 				//HttpServletResponse resp = (HttpServletResponse) response;
 				HttpSession session = req.getSession();
@@ -37,7 +37,7 @@ public class FilterAutenticacao implements Filter  {
 			
 				if(!url.equalsIgnoreCase("index.jsf") && usuarioLogado == null) {
 					
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsf");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsf?faces-redirect=true");
 					
 					dispatcher.forward(request, response);
 					
@@ -46,13 +46,7 @@ public class FilterAutenticacao implements Filter  {
 				}else {
 					chain.doFilter(request, response);
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
-				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsf");
-				
-				dispatcher.forward(request, response);
-			}
+			
 	}
 
 	@Override
