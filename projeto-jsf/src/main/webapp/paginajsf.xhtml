@@ -36,6 +36,11 @@
 			<h:outputLabel for="idade" value="Idade: " />
 			<h:inputText id="idade" value="#{pessoaBean.pessoa.idade}" />
 			
+			<h:outputLabel for="nascimento" value="Nascimento: " />
+			<h:inputText id="nascimento" value="#{pessoaBean.pessoa.dataNascimento}" converterMessage="Data data de nascimento invalida">
+				<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" timeZone="GMT-03:00" />
+			</h:inputText>
+			
 			<h:outputText for="sexo" value="Sexo:" />
 			<h:selectOneRadio id="sexo" value="#{pessoaBean.pessoa.sexo}" >
 				<f:selectItem itemValue="MASCULINO" itemLabel="Masculino" />
@@ -105,15 +110,15 @@
 			</f:facet>
 			<h:column>
 				<f:facet name="header">ID</f:facet>
-				<h:outputText value="#{p.id}" />
+				<h:outputText title="id" value="#{p.id}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">NOME</f:facet>
-				<h:outputText value="#{p.nome}" />
+				<h:outputText title="nome" value="#{p.nome}" />
 			</h:column>
 			<h:column>
 			  	<f:facet name="header">SOBRENOME</f:facet>
-				<h:outputText value="#{p.sobreNome}" />
+				<h:outputText title="sobrenome" value="#{p.sobreNome}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">AÇÃO</f:facet>

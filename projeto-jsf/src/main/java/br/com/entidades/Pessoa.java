@@ -45,7 +45,7 @@ public class Pessoa implements Serializable {
 	private Boolean ativo;
 	
 	@Temporal(TemporalType.DATE)
-	private Date dataNascimento;
+	private Date dataNascimento = new Date();
 	
 	// MetodosS
 	
