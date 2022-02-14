@@ -28,10 +28,14 @@
 			<h:inputText id="id" value="#{pessoaBean.pessoa.id}" readonly="true" />
 			
 			<h:outputLabel for="nome" value="Nome: " />
-			<h:inputText id="nome" value="#{pessoaBean.pessoa.nome}" />
+			<h:inputText id="nome" value="#{pessoaBean.pessoa.nome}" 
+				required="true" requiredMessage="Informe o nome do usuário" 
+				validatorMessage="O nome deve conter no minimo 4 letras e no maximo 50">
+				<f:validateLength minimum="4" maximum="50" />
+			</h:inputText>
 			
 			<h:outputLabel for="sobreNome" value="Sobrenome: " />
-			<h:inputText id="sobreNome" value="#{pessoaBean.pessoa.sobreNome}" />
+			<h:inputText id="sobreNome" value="#{pessoaBean.pessoa.sobreNome}" required="true" requiredMessage="Informe o nome do Sobrenome" />
 			
 			<h:outputLabel for="idade" value="Idade: " />
 			<h:inputText id="idade" value="#{pessoaBean.pessoa.idade}" />
