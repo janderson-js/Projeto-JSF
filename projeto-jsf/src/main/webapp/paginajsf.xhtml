@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui = "http://java.sun.com/jsf/facelets">
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	>
+	
 
 <h:head>
 	<title>Olá JSF</title>
@@ -41,7 +43,8 @@
 			<h:inputText id="idade" value="#{pessoaBean.pessoa.idade}" />
 			
 			<h:outputLabel for="nascimento" value="Nascimento: " />
-			<h:inputText id="nascimento" value="#{pessoaBean.pessoa.dataNascimento}" converterMessage="Data data de nascimento invalida">
+			<h:inputText id="nascimento" placeholder="dd/mm/aaaa" value="#{pessoaBean.pessoa.dataNascimento}" converterMessage="Data data de nascimento invalida">
+				<f:passThroughAttribute name="placeholder" value="dd/mm/aaaa" />
 				<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" timeZone="GMT-03:00" />
 			</h:inputText>
 			
@@ -101,14 +104,15 @@
 				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" title="Salvar"  image="/resources/img/salvar.png"  />
 				<h:commandButton value="Novo" action="#{pessoaBean.novo}" title="Novo"  image="/resources/img/novo.png" />
 				<h:commandButton rendered="#{pessoaBean.permintirAcesso('administrador')}" value="Remover" action="#{pessoaBean.deletarPorId}" title="Remover" image="/resources/img/delete.png"  />
-				<h:commandButton value="limpar" type="reset" title="Limpar campos" image="/resources/img/limpar.png" />
+				<h:commandButton value="limpar" action="#{pessoaBean.novo}" title="Limpar campos" image="/resources/img/limpar.png" />
 			</h:panelGroup>
 		
 		</h:panelGrid>
+	</h:form>
 		
-		<h2></h2>
-		
-		<h:dataTable rendered="#{pessoaBean.permintirAcesso('administrador')}" value="#{pessoaBean.pessoas}" var="p" style="border-spacing: 10px; cellpadding:6px;text-align:center;">
+	<h:form id="formDataTable">
+		<h:dataTable rendered="#{pessoaBean.permintirAcesso('administrador')}" 
+			 value="#{pessoaBean.pessoas}" var="p" style="border-spacing: 10px; cellpadding:6px;text-align:center;">
 			<f:facet name="header">
 				Tabela de Usuários Cadastrados
 			</f:facet>
@@ -140,6 +144,7 @@
 			</h:column>
 		</h:dataTable>
 	</h:form>
+	
 </h:body>
 
 </html>
