@@ -32,6 +32,8 @@ public class Pessoa implements Serializable {
 	
 	private String logradouro;
 	
+	private String numero;
+	
 	private String complemento;
 	
 	private String bairro;
@@ -109,6 +111,14 @@ public class Pessoa implements Serializable {
 
 	public void setLogradouro(String logradouro) {
 		this.logradouro = logradouro;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
 	public String getComplemento() {

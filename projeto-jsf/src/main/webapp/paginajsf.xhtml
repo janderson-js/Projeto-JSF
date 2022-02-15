@@ -44,11 +44,16 @@
 			
 			<h:outputLabel for="cep" value="CEP: " />
 			<h:inputText id="cep" value="#{pessoaBean.pessoa.cep}">
-				<f:ajax event="blur"  execute="@this" listener="#{pessoaBean.pesquisaCEP}"/>
+				<f:ajax event="blur"  execute="@this" render="logradouro complemento bairro localidade uf"
+				 listener="#{pessoaBean.pesquisaCEP}"/>
 			</h:inputText>
 			
 			<h:outputLabel for="logradouro" value="Logradouro: " />
 			<h:inputText id="logradouro" value="#{pessoaBean.pessoa.logradouro}"/>
+			
+			<h:outputLabel for="numero" value="Número " />
+			<h:inputText id="numero" value="#{pessoaBean.pessoa.numero}"/>
+			
 			
 			<h:outputLabel for="complemento" value="Complemento: " />
 			<h:inputText id="complemento" value="#{pessoaBean.pessoa.complemento}"/>
