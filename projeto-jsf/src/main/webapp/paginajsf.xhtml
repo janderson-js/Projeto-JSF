@@ -4,7 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui = "http://java.sun.com/jsf/facelets"
-	>
+	xmlns:pt= "http://xmlns.jcp.org/jsf/passthrough">
 	
 
 <h:head>
@@ -27,49 +27,51 @@
 			</f:facet>
 			
 			<h:outputLabel for="id" value="ID: " />
-			<h:inputText id="id" value="#{pessoaBean.pessoa.id}" readonly="true" />
+			<h:inputText pt:placeholder="ID" id="id" value="#{pessoaBean.pessoa.id}" readonly="true" />
 			
 			<h:outputLabel for="nome" value="Nome: " />
 			<h:inputText id="nome" value="#{pessoaBean.pessoa.nome}" 
 				required="true" requiredMessage="Informe o nome do usuário" 
-				validatorMessage="O nome deve conter no minimo 4 letras e no maximo 50">
+				validatorMessage="O nome deve conter no minimo 4 letras e no maximo 50"
+				pt:placeholder="Informe o nome">
 				<f:validateLength minimum="4" maximum="50" />
 			</h:inputText>
 			
 			<h:outputLabel for="sobreNome" value="Sobrenome: " />
-			<h:inputText id="sobreNome" value="#{pessoaBean.pessoa.sobreNome}" required="true" requiredMessage="Informe o nome do Sobrenome" />
+			<h:inputText id="sobreNome" pt:placeholder="Informe o sobrenome"
+			value="#{pessoaBean.pessoa.sobreNome}" required="true" requiredMessage="Informe o nome do Sobrenome" />
 			
 			<h:outputLabel for="idade" value="Idade: " />
-			<h:inputText id="idade" value="#{pessoaBean.pessoa.idade}" />
+			<h:inputText id="idade" pt:placeholder="Informe a idade" value="#{pessoaBean.pessoa.idade}" />
 			
 			<h:outputLabel for="cep" value="CEP: " />
-			<h:inputText id="cep" value="#{pessoaBean.pessoa.cep}">
+			<h:inputText id="cep" pt:placeholder="Informe o CEP" value="#{pessoaBean.pessoa.cep}">
 				<f:ajax event="blur"  execute="@this" render="logradouro complemento bairro localidade uf"
 				 listener="#{pessoaBean.pesquisaCEP}"/>
 			</h:inputText>
 			
 			<h:outputLabel for="logradouro" value="Logradouro: " />
-			<h:inputText id="logradouro" value="#{pessoaBean.pessoa.logradouro}"/>
+			<h:inputText id="logradouro" pt:placeholder="Informe o logradouro" value="#{pessoaBean.pessoa.logradouro}"/>
 			
 			<h:outputLabel for="numero" value="Número: " />
-			<h:inputText id="numero" value="#{pessoaBean.pessoa.numero}"/>
+			<h:inputText id="numero" pt:placeholder="Informe o número" value="#{pessoaBean.pessoa.numero}"/>
 			
 			
 			<h:outputLabel for="complemento" value="Complemento: " />
-			<h:inputText id="complemento" value="#{pessoaBean.pessoa.complemento}"/>
+			<h:inputText id="complemento" pt:placeholder="Informe o complemento" value="#{pessoaBean.pessoa.complemento}"/>
 			
 			<h:outputLabel for="bairro" value="Bairro: " />
-			<h:inputText id="bairro" value="#{pessoaBean.pessoa.bairro}"/>
+			<h:inputText id="bairro" pt:placeholder="Informe o bairro" value="#{pessoaBean.pessoa.bairro}"/>
 			
 			<h:outputLabel for="localidade" value="Localidade: " />
-			<h:inputText id="localidade" value="#{pessoaBean.pessoa.localidade}"/>
+			<h:inputText id="localidade" pt:placeholder="Informe o localidade" value="#{pessoaBean.pessoa.localidade}"/>
 			
 			<h:outputLabel for="uf" value="UF: " />
-			<h:inputText id="uf" value="#{pessoaBean.pessoa.uf}"/>
+			<h:inputText id="uf" pt:placeholder="Informe a UF" value="#{pessoaBean.pessoa.uf}"/>
 			
 			<h:outputLabel for="nascimento" value="Nascimento: " />
-			<h:inputText id="nascimento" placeholder="dd/mm/aaaa" value="#{pessoaBean.pessoa.dataNascimento}" converterMessage="Data data de nascimento invalida">
-				<f:passThroughAttribute name="placeholder" value="dd/mm/aaaa" />
+			<h:inputText pt:placeholder="dd/mm/aaaa"
+			id="nascimento"  value="#{pessoaBean.pessoa.dataNascimento}" converterMessage="Data data de nascimento invalida">
 				<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" timeZone="GMT-03:00" />
 			</h:inputText>
 			
@@ -116,10 +118,10 @@
 			</h:selectOneMenu>
 			
 			<h:outputLabel for="login" value="Login"/>
-			<h:inputText id="login" value="#{pessoaBean.pessoa.login}" />
+			<h:inputText id="login" pt:placeholder="Informe o Login" value="#{pessoaBean.pessoa.login}" />
 			
 			<h:outputLabel for="senha" value="Senha"/>
-			<h:inputSecret id="senha" value="#{pessoaBean.pessoa.senha}" />
+			<h:inputSecret id="senha" pt:placeholder="Informe a senha" value="#{pessoaBean.pessoa.senha}" />
 			
 			<h:outputLabel for="booleanBox" value="Ativo"/>
 			<h:selectBooleanCheckbox id="booleanBox" value="#{pessoaBean.pessoa.ativo}" />
