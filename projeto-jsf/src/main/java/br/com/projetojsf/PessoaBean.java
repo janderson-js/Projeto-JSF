@@ -154,5 +154,18 @@ public class PessoaBean implements Serializable {
 		}
 	}
 	
+	public String deslogar() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = context.getExternalContext();
+		externalContext.getSessionMap().remove("usuarioLogado");
+		
+		HttpServletRequest req = (HttpServletRequest) context.getCurrentInstance().getExternalContext().getRequest();
+		
+		req.getSession().invalidate();
+		
+		return "index.jsf";
+	}
+	
 }
 
