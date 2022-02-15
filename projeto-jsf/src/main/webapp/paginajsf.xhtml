@@ -42,6 +42,13 @@
 			<h:outputLabel for="idade" value="Idade: " />
 			<h:inputText id="idade" value="#{pessoaBean.pessoa.idade}" />
 			
+			<h:outputLabel for="cep" value="CEP: " />
+			<h:inputText id="cep" value="#{pessoaBean.pessoa.cep}">
+			
+				<f:ajax event="blur"  execute="@this" listener="#{pessoaBean.pesquisaCEP}"/>
+			
+			</h:inputText>
+			
 			<h:outputLabel for="nascimento" value="Nascimento: " />
 			<h:inputText id="nascimento" placeholder="dd/mm/aaaa" value="#{pessoaBean.pessoa.dataNascimento}" converterMessage="Data data de nascimento invalida">
 				<f:passThroughAttribute name="placeholder" value="dd/mm/aaaa" />

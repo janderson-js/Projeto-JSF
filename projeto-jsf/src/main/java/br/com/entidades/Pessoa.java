@@ -28,6 +28,8 @@ public class Pessoa implements Serializable {
 	
 	private Integer idade;
 	
+	private String cep;
+	
 	private String sexo;
 	
 	private String login;
@@ -81,6 +83,14 @@ public class Pessoa implements Serializable {
 
 	public void setIdade(Integer idade) {
 		this.idade = idade;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 	public Date getDataNascimento() {
