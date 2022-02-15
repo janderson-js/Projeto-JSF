@@ -44,10 +44,23 @@
 			
 			<h:outputLabel for="cep" value="CEP: " />
 			<h:inputText id="cep" value="#{pessoaBean.pessoa.cep}">
-			
 				<f:ajax event="blur"  execute="@this" listener="#{pessoaBean.pesquisaCEP}"/>
-			
 			</h:inputText>
+			
+			<h:outputLabel for="logradouro" value="Logradouro: " />
+			<h:inputText id="logradouro" value="#{pessoaBean.pessoa.logradouro}"/>
+			
+			<h:outputLabel for="complemento" value="Complemento: " />
+			<h:inputText id="complemento" value="#{pessoaBean.pessoa.complemento}"/>
+			
+			<h:outputLabel for="bairro" value="Bairro: " />
+			<h:inputText id="bairro" value="#{pessoaBean.pessoa.bairro}"/>
+			
+			<h:outputLabel for="localidade" value="Localidade: " />
+			<h:inputText id="localidade" value="#{pessoaBean.pessoa.localidade}"/>
+			
+			<h:outputLabel for="uf" value="UF: " />
+			<h:inputText id="uf" value="#{pessoaBean.pessoa.uf}"/>
 			
 			<h:outputLabel for="nascimento" value="Nascimento: " />
 			<h:inputText id="nascimento" placeholder="dd/mm/aaaa" value="#{pessoaBean.pessoa.dataNascimento}" converterMessage="Data data de nascimento invalida">

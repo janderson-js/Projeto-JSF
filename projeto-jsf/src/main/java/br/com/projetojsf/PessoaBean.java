@@ -19,6 +19,8 @@ import javax.faces.event.AjaxBehaviorEvent;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import br.com.dao.DAOGeneric;
 import br.com.entidades.Pessoa;
 import br.com.repository.IDAOPessoa;
@@ -137,7 +139,14 @@ public class PessoaBean implements Serializable {
 				jsonCEP.append(cep);
 			}
 			
-			System.out.println(jsonCEP);
+			Pessoa gsonAux = new Gson().fromJson(jsonCEP.toString(), Pessoa.class);
+			
+			pessoa.setCep(gsonAux.getCep());
+			pessoa.setLogradouro(gsonAux.getLogradouro());
+			pessoa.setComplemento(gsonAux.getComplemento());
+			pessoa.setBairro(gsonAux.getBairro());
+			pessoa.setLocalidade(gsonAux.getLocalidade());
+			pessoa.setUf(gsonAux.getUf());
 			
 		} catch (Exception e) {
 			e.printStackTrace();
