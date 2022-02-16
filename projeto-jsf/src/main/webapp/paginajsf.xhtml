@@ -70,10 +70,16 @@
 			<h:inputText id="uf" pt:placeholder="Informe a UF" value="#{pessoaBean.pessoa.uf}"/>
 			
 			<h:outputLabel for="estados" value="Estado: " />
-			<h:selectOneMenu id="estados" value="#{pessoaBean.pessoa.estados}" immediate="true" >
+			<h:selectOneMenu id="estados" value="#{pessoaBean.pessoa.estado}" immediate="true" >
 				<f:selectItem itemLabel="Selecione..." noSelectionOption="true" />
 				<f:selectItems value="#{pessoaBean.estados}" var="est" itemValue="#{est.id}" />
-				<f:ajax event="change" execute="@this" listener="#{pessoaBean.carregaCidades}" />
+				<f:ajax event="change" execute="@this" listener="#{pessoaBean.carregaCidades}" render="cidades" />
+			</h:selectOneMenu>
+			
+			<h:outputLabel for="cidades" value="Cidade: " />
+			<h:selectOneMenu id="cidades" value="#{pessoaBean.pessoa.cidades}" immediate="true" >
+				<f:selectItem itemLabel="Selecione..." noSelectionOption="true" />
+				<f:selectItems value="#{pessoaBean.cidades}" var="ci" itemValue="#{ci.id}" />
 			</h:selectOneMenu>
 			
 			<h:outputLabel for="nascimento" value="Nascimento: " />

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -44,7 +45,10 @@ public class Pessoa implements Serializable {
 	private String uf;
 	
 	@Transient
-	private Estados estados;
+	private Estados estado;
+	
+	@ManyToOne
+	private Cidades cidades;
 	
 	private String sexo;
 	
@@ -157,14 +161,22 @@ public class Pessoa implements Serializable {
 		this.uf = uf;
 	}
 	
-	public Estados getEstados() {
-		return estados;
+	public Estados getEstado() {
+		return estado;
 	}
 
-	public void setEstados(Estados estados) {
-		this.estados = estados;
+	public void setEstado(Estados estado) {
+		this.estado = estado;
 	}
 	
+	public Cidades getCidades() {
+		return cidades;
+	}
+
+	public void setCidades(Cidades cidades) {
+		this.cidades = cidades;
+	}
+
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}
