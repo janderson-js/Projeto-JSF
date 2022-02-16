@@ -16,6 +16,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
+import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -42,6 +43,9 @@ public class PessoaBean implements Serializable {
 	private DAOGeneric<Pessoa> daoGeneric = new DAOGeneric<Pessoa>();
 	
 	private IDAOPessoa iDaoPessoa = new  IDAOPessoaImpl();
+	
+	private List<SelectItem> estados; 
+	
 	
 	public String salvar() {
 		pessoa =  daoGeneric.merge(pessoa);
@@ -91,6 +95,15 @@ public class PessoaBean implements Serializable {
 	
 	public List<Pessoa> getPessoas() {
 		return pessoas;
+	}
+	
+	public List<SelectItem> getEstados() {
+		estados = iDaoPessoa.lsitaEstados();
+		return estados;
+	}
+	
+	public void setEstados(List<SelectItem> estados) {
+		this.estados = estados;
 	}
 	
 	public String logar() {
