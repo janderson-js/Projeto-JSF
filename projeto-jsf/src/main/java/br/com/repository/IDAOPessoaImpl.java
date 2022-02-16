@@ -39,10 +39,10 @@ public class IDAOPessoaImpl implements IDAOPessoa {
 		EntityTransaction transaction = entityManager.getTransaction();
 		transaction.begin();
 		
-		List<Estados> estados = entityManager.createQuery("from Estados").getResultList();
+		List<Estados> estados = entityManager.createQuery("from Estados ORDER BY nome").getResultList();
 		
 		for (Estados estado : estados) {
-			selectItems.add(new SelectItem(estados, estado.getNome()));
+			selectItems.add(new SelectItem(estado.getId(), estado.getNome()));
 		}
 		
 		return selectItems;

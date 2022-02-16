@@ -180,5 +180,12 @@ public class PessoaBean implements Serializable {
 		return "index.jsf";
 	}
 	
+	public void carregaCidades(AjaxBehaviorEvent event) {
+		String idEstado = (String) event.getComponent().getAttributes().get("submittedValue");
+		
+		if(idEstado != null) {
+			
+		}
+	}
 }
 
