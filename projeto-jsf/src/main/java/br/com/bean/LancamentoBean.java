@@ -1,4 +1,4 @@
-package br.com.projetojsf;
+package br.com.bean;
 
 import java.util.ArrayList;
 import java.util.List;
