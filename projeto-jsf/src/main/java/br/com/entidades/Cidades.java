@@ -49,13 +49,11 @@ public class Cidades implements Serializable {
 
 		this.estados = estados;
 	}
-	
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
-	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -68,6 +66,5 @@ public class Cidades implements Serializable {
 		Cidades other = (Cidades) obj;
 		return Objects.equals(id, other.id);
 	}
-	
 	
 }

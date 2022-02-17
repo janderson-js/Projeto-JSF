@@ -61,5 +61,4 @@ public class Estados  implements Serializable{
 		Estados other = (Estados) obj;
 		return Objects.equals(id, other.id);
 	}
-	
 }
