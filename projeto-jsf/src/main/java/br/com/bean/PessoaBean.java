@@ -63,11 +63,32 @@ public class PessoaBean implements Serializable {
 	public String salvar() {
 		pessoa = daoGeneric.merge(pessoa);
 		carregarPessoas();
+		editar();
 		motrarMsg("Cadastrado com sucesso!!");
 		return "";
 	}
+	
+	public void editar() {
+		if(pessoa.getCidades() != null) {
+			Estados estado = pessoa.getCidades().getEstados();
+			pessoa.setEstado(estado);
+			
+			List<Cidades> cidades = JPAUtil.getEntityManager()
+					.createQuery("from Cidades where estados_id=" + estado.getId())
+					.getResultList();
 
-	private void motrarMsg(String msg) {
+			List<SelectItem> selectItemsCidades = new ArrayList<SelectItem>();
+
+			for (Cidades cidade : cidades) {
+				selectItemsCidades
+						.add(new SelectItem(cidade, cidade.getNome()));
+			}
+
+			setCidades(selectItemsCidades);
+		}
+	}
+
+	public void motrarMsg(String msg) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		FacesMessage message = new FacesMessage(msg);
 		context.addMessage("labelMSG", message);

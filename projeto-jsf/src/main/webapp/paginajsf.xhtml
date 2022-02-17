@@ -77,7 +77,7 @@
 			</h:selectOneMenu>
         
 			<h:outputLabel value="Cidades:"/>
-			<h:selectOneMenu value="{pessoaBean.pessoa.cidades}" immediate="true" id="comboCidade" converter="converterCidades">
+			<h:selectOneMenu value="#{pessoaBean.pessoa.cidades}" immediate="true" id="comboCidade" converter="converterCidades">
 			    <f:selectItem noSelectionOption="true"  itemLabel="--[Selecione]--"/>
 			    <f:selectItems value="#{pessoaBean.cidades}"/> 
 			</h:selectOneMenu>
@@ -170,7 +170,7 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">AÇÃO</f:facet>
-				<h:commandLink  style="margin: 10px;">
+				<h:commandLink  style="margin: 10px;" immediate="true" action="#{pessoaBean.editar}">
 					<f:setPropertyActionListener value="#{p}"
 						target="#{pessoaBean.pessoa}"  />
 					<h:graphicImage library="img" name="editar.png" title="Editar" />
