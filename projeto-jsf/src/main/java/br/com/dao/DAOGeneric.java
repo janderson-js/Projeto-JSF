@@ -72,5 +72,17 @@ public class DAOGeneric<E> implements Serializable {
 		
 		return retorno;
 	}
+	
+	public E consultar(Class<E> entidade, String idUser) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+		
+		E objeto = (E) entityManager.find(entidade, Long.parseLong(idUser));
+		
+		transaction.commit();
+		
+		return objeto;
+	}
 
 }
