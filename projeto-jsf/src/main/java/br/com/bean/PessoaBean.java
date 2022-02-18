@@ -13,6 +13,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -81,29 +82,34 @@ public class PessoaBean implements Serializable {
 	}
 
 	public String salvar()throws IOException{
-		//Inicio Processar imagem!!
-			byte[] imagemByte = getByte(arquivoFoto.getInputStream());
-			pessoa.setFotoIconBase64Original(imagemByte);
-			// transforma em bufferimage
-			BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(imagemByte));
-			// Pega o tipo da Imagem
-			int type = bufferedImage.getType() == 0? bufferedImage.TYPE_INT_ARGB : bufferedImage.getType();
-			
-			int largura = 200;
-			int altura = 200;
-			// Cria a miniatura
-			BufferedImage resizedImage = new BufferedImage(altura, altura, type);
-			Graphics2D g = resizedImage.createGraphics();
-			g.drawImage(resizedImage, 0, 0, largura, altura, null);
-			g.dispose();
-			// Escrever a imagem em um tamnho menor
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			String extensao = arquivoFoto.getContentType().split("\\/")[1];
-			ImageIO.write(resizedImage, extensao, baos);
-			
-			String miniImagem = "data:"+arquivoFoto.getContentType()+";base64" + 
-			DatatypeConverter.printBase64Binary(baos.toByteArray());
-		//Fim Processar imagem!!
+		/*Processsar imagem*/
+		 byte[] imagemByte = getByte(arquivoFoto.getInputStream());
+		 pessoa.setFotoIconBase64Original(imagemByte); /*Salva imagem original*/
+		 
+		 /*transformar em bufferimage*/
+		 BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(imagemByte));
+		 
+		 /*Pega o tipo da imagem*/
+		 int type = bufferedImage.getType() == 0? BufferedImage.TYPE_INT_ARGB : bufferedImage.getType();
+		 
+		 int largura = 200;
+		 int altura = 200;
+		 
+		 /*Criar a miniatura*/
+		  BufferedImage resizedImage = new BufferedImage(altura, altura, type);
+		  Graphics2D g = resizedImage.createGraphics();
+		  g.drawImage(bufferedImage, 0, 0, largura, altura, null);
+		  g.dispose();
+		  
+		  /*Escrever novamente a imagem em tamanho menor*/
+		  ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		  String extensao = arquivoFoto.getContentType().split("\\/")[1]; /*image/png*/
+		  ImageIO.write(resizedImage, extensao, baos);
+		  
+		  String miniImagem = "data:" + arquivoFoto.getContentType() + ";base64," +
+		                       DatatypeConverter.printBase64Binary(baos.toByteArray());
+		 
+		/*Processsar imagem*/
 		pessoa.setFotoIconBase64(miniImagem);
 		pessoa.setExtensao(extensao);
 		pessoa = daoGeneric.merge(pessoa);
@@ -315,5 +321,11 @@ public class PessoaBean implements Serializable {
 		}
 		
 		return buf;
+	}
+	
+	public void baixarImagem() {
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		String fileDownloadId = params.get("fileDownloadId");
+		System.out.println(fileDownloadId);
 	}
  }

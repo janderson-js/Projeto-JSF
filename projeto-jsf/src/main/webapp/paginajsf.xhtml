@@ -166,6 +166,13 @@
 				<h:outputText title="id" value="#{p.id}" />
 			</h:column>
 			<h:column>
+				<f:facet name="header">FOTO</f:facet>
+				<h:commandLink actionListener="#{pessoaBean.baixarImagem}">
+					<h:graphicImage width="60" height="60" value="#{p.fotoIconBase64}" />
+					<f:param name="fileDownloadId" value="#{p.id}" />
+				</h:commandLink>
+			</h:column>
+			<h:column>
 				<f:facet name="header">NOME</f:facet>
 				<h:outputText title="nome" value="#{p.nome}" />
 			</h:column>
@@ -175,7 +182,7 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">AÇÃO</f:facet>
-				<h:commandLink  style="margin: 10px;" immediate="true" action="#{pessoaBean.editar}">
+				<h:commandLink  style="margin: 10px;" immediate="true" action="#{pessoaBean.editar}"> 
 					<f:setPropertyActionListener value="#{p}"
 						target="#{pessoaBean.pessoa}"  />
 					<h:graphicImage library="img" name="editar.png" title="Editar" />
