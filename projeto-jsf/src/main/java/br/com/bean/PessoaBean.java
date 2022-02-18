@@ -20,6 +20,7 @@ import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import com.google.gson.Gson;
 
@@ -51,6 +52,18 @@ public class PessoaBean implements Serializable {
 	private List<SelectItem> estados;
 
 	private List<SelectItem> cidades;
+	
+	private Part arquivoFoto;
+	
+	//Metodos
+
+	public Part getArquivoFoto() {
+		return arquivoFoto;
+	}
+
+	public void setArquivoFoto(Part arquivoFoto) {
+		this.arquivoFoto = arquivoFoto;
+	}
 
 	public List<SelectItem> getCidades() {
 		return cidades;
@@ -61,6 +74,9 @@ public class PessoaBean implements Serializable {
 	}
 
 	public String salvar() {
+		
+		System.out.println(arquivoFoto);
+		
 		pessoa = daoGeneric.merge(pessoa);
 		carregarPessoas();
 		editar();

@@ -17,7 +17,9 @@
 		
 	<h:outputLabel style="margin-bottom:40px;" value="Usuário logado: #{sessionScope['usuarioLogado'].nome} #{sessionScope['usuarioLogado'].sobreNome}" />
 	
-	<h:form rendered="#{pessoaBean.permintirAcesso('administrador')}" id="formPessoa" style="margin-bottom:80px;">
+	<h:form enctype="multipart/form-data"
+			rendered="#{pessoaBean.permintirAcesso('administrador')}" 
+			id="formPessoa" style="margin-bottom:80px;">
 		
 		<h:messages id="labelMSG" />
 		
@@ -26,8 +28,11 @@
 				<h:outputText value="Cadastro de Usuários" />
 			</f:facet>
 			
+			<h:outputLabel for="foto" value="Foto: " />
+			<h:inputFile id="foto" value="#{pessoaBean.arquivoFoto}" > </h:inputFile>
+			
 			<h:outputLabel for="id" value="ID: " />
-			<h:inputText pt:placeholder="ID" id="id" value="#{pessoaBean.pessoa.id}" readonly="true" />
+			<h:inputText pt:placeholder="ID" id="id" title="Mostra o id após usuário cadastrado" value="#{pessoaBean.pessoa.id}" readonly="true" />
 			
 			<h:outputLabel for="nome" value="Nome: " />
 			<h:inputText id="nome" value="#{pessoaBean.pessoa.nome}" 
