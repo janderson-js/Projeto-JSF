@@ -113,6 +113,7 @@ public class PessoaBean implements Serializable {
 		motrarMsg("Cadastrado com sucesso!!");
 		return "";
 	}
+	
 	@PostConstruct
 	public void carregarPessoas() {
 		pessoas = daoGeneric.getListEntity(pessoa);
@@ -140,9 +141,12 @@ public class PessoaBean implements Serializable {
 	}
 
 	public String logar() {
-
-		Pessoa pessoaUser = iDaoPessoa.consultarUsuario(pessoa.getLogin(),
-				pessoa.getSenha());
+		
+		Pessoa pessoaUser = new Pessoa();
+		
+		if(iDaoPessoa.consultarUsuario(pessoa.getLogin(),pessoa.getSenha()) != null) {
+			 pessoaUser = iDaoPessoa.consultarUsuario(pessoa.getLogin(),pessoa.getSenha());
+		}
 
 		if (pessoa != null) {
 
