@@ -20,6 +20,21 @@
 			<property name="hibernate.show.sql" value="true"/>
 			<property name="hibernate.format_sql" value="true"/>
 			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			
+			<!-- minimo de conexões ou portas disponiveis -->
+			<property name="hibernate.c3p0.min_size" value="5"/>
+			
+			<!-- máximo de conexões ou portas disponiveis -->
+			<property name="hibernate.c3p0.min_size" value="20"/>
+			
+			<!-- o número de segundos em que uma conexão inativa é mantida no pool -->
+			<property name="hibernate.c3p0.min_timeout" value="300"/>
+			
+			<!-- Número total de instruções, operações no banco de dados matida em cache -->
+			<property name="hibernate.c3p0.max_statements" value="10"/>
+			
+			<!--Tempo ocioso em segundos antes de uma conexão ser validada automaticamente -->
+			<property name="hibernate.c3p0.idle_test_period" value="120"/>
 		</properties>
 	
 	</persistence-unit>

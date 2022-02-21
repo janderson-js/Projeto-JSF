@@ -225,6 +225,7 @@ public class PessoaBean implements Serializable {
 				.get("usuarioLogado");
 
 		return pessoaUser.getPerfilUser().equalsIgnoreCase(acesso);
+		
 	}
 
 	public void pesquisaCEP(AjaxBehaviorEvent event) {
