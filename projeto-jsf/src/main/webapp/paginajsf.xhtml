@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui = "http://java.sun.com/jsf/facelets"
-	xmlns:pt= "http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:ui ="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 	
 
 <h:head>
@@ -18,7 +18,7 @@
 	<h:outputLabel style="margin-bottom:40px;" value="Usuário logado: #{sessionScope['usuarioLogado'].nome} #{sessionScope['usuarioLogado'].sobreNome}" />
 	
 	<h:form enctype="multipart/form-data"
-			rendered="#{pessoaBean.permintirAcesso('administrador')}" 
+			rendered="#{pessoaBean.permintirAcesso('ADMINISTRADOR')}" 
 			id="formPessoa" style="margin-bottom:80px;">
 		
 		<h:messages id="labelMSG" />
@@ -44,7 +44,7 @@
 			
 			<h:outputLabel for="sobreNome" value="Sobrenome: " />
 			<h:inputText id="sobreNome" pt:placeholder="Informe o sobrenome"
-			value="#{pessoaBean.pessoa.sobreNome}" required="true" requiredMessage="Informe o nome do Sobrenome" />
+			value="#{pessoaBean.pessoa.sobreNome}"/>
 			
 			<h:outputLabel for="idade" value="Idade: " />
 			<h:inputText id="idade" pt:placeholder="Informe a idade" value="#{pessoaBean.pessoa.idade}" />
@@ -74,14 +74,14 @@
 			<h:outputLabel for="uf" value="UF: " />
 			<h:inputText id="uf" pt:placeholder="Informe a UF" value="#{pessoaBean.pessoa.uf}"/>
 			
-			<h:outputLabel value="Estados:"/>
+			<h:outputLabel for="comboEstado" value="Estados:"/>
 			<h:selectOneMenu value="#{pessoaBean.pessoa.estado}" immediate="true" id="comboEstado" converter="converterEstados">
 			    <f:selectItem itemLabel="--[Selecione]--" noSelectionOption="true"/>
 			    <f:selectItems value="#{pessoaBean.estados}"/>
 			    <f:ajax event="change" execute="@this" listener="#{pessoaBean.carregaCidades}" render="comboCidade"/>
 			</h:selectOneMenu>
         
-			<h:outputLabel value="Cidades:"/>
+			<h:outputLabel for="comboCidade" value="Cidades:"/>
 			<h:selectOneMenu value="#{pessoaBean.pessoa.cidades}" immediate="true" id="comboCidade" converter="converterCidades">
 			    <f:selectItem noSelectionOption="true"  itemLabel="--[Selecione]--"/>
 			    <f:selectItems value="#{pessoaBean.cidades}"/> 
@@ -148,7 +148,7 @@
 			<h:panelGroup style="display:flex;justify-content:flex-start;">
 				<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" title="Salvar"  image="/resources/img/salvar.png"  />
 				<h:commandButton value="Novo" action="#{pessoaBean.novo}" title="Novo"  image="/resources/img/novo.png" />
-				<h:commandButton rendered="#{pessoaBean.permintirAcesso('administrador')}" value="Remover" action="#{pessoaBean.deletarPorId}" title="Remover" image="/resources/img/delete.png"  />
+				<h:commandButton rendered="#{pessoaBean.permintirAcesso('ADMINISTRADOR')}" value="Remover" action="#{pessoaBean.deletarPorId}" title="Remover" image="/resources/img/delete.png"  />
 				<h:commandButton value="limpar" action="#{pessoaBean.novo}" title="Limpar campos" image="/resources/img/limpar.png" />
 			</h:panelGroup>
 		
@@ -156,7 +156,7 @@
 	</h:form>
 		
 	<h:form id="formDataTable">
-		<h:dataTable rendered="#{pessoaBean.permintirAcesso('administrador')}" 
+		<h:dataTable rendered="#{pessoaBean.permintirAcesso('ADMINISTRADOR')}" 
 			 value="#{pessoaBean.pessoas}" var="p" style="border-spacing: 10px; cellpadding:6px;text-align:center;">
 			<f:facet name="header">
 				Tabela de Usuários Cadastrados
@@ -188,7 +188,7 @@
 					<h:graphicImage library="img" name="editar.png" title="Editar" />
 				</h:commandLink>
 			
-				<h:commandLink rendered="#{pessoaBean.permintirAcesso('administrador')}"  action="#{pessoaBean.deletarPorId}">
+				<h:commandLink rendered="#{pessoaBean.permintirAcesso('ADMINISTRADOR')}"  action="#{pessoaBean.deletarPorId}">
 					<f:setPropertyActionListener value="#{p}"
 						target="#{pessoaBean.pessoa}" />
 						<h:graphicImage library="img" name="deletar.png" title="Excluir" />

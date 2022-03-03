@@ -115,7 +115,7 @@ public class PessoaBean implements Serializable {
 		pessoa.setExtensao(extensao);
 		pessoa = daoGeneric.merge(pessoa);
 		carregarPessoas();
-		editar();
+		//editar();
 		motrarMsg("Cadastrado com sucesso!!");
 		return "";
 	}
@@ -225,6 +225,7 @@ public class PessoaBean implements Serializable {
 				.get("usuarioLogado");
 
 		return pessoaUser.getPerfilUser().equalsIgnoreCase(acesso);
+		
 	}
 
 	public void pesquisaCEP(AjaxBehaviorEvent event) {

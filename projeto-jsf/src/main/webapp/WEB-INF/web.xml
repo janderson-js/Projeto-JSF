@@ -2,16 +2,15 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
   <display-name>projeto-jsf</display-name>
   <welcome-file-list>
-		<welcome-file>index.jsf</welcome-file>
-	</welcome-file-list>
-	
-	<session-config> <session-timeout>1</session-timeout> </session-config>
-	
-	<context-param>
-  		<param-name>com.sun.faces.enableRestoreView11Compatibility</param-name>
-   		<param-value>true</param-value>
-	</context-param>
-
+    <welcome-file>index.jsf</welcome-file>
+  </welcome-file-list>
+  <session-config>
+    <session-timeout>1</session-timeout>
+  </session-config>
+  <context-param>
+    <param-name>com.sun.faces.enableRestoreView11Compatibility</param-name>
+    <param-value>true</param-value>
+  </context-param>
   <servlet>
     <servlet-name>Faces Servlet</servlet-name>
     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -21,11 +20,8 @@
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.jsf</url-pattern>
   </servlet-mapping>
-  
   <mime-mapping>
-  	<extension>jsp</extension>
-  	<mime-type>application/jsp</mime-type>
+    <extension>jsp</extension>
+    <mime-type>application/jsp</mime-type>
   </mime-mapping>
- 
-
 </web-app>
