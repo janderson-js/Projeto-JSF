@@ -37,7 +37,7 @@
 			<h:panelGroup style="display:flex;justify-content:flex-start;">
 				<h:commandButton value="Salvar" action="#{lancamentoBean.salvar}" title="Salvar"  image="/resources/img/salvar.png"  />
 				<h:commandButton value="Novo" action="#{lancamentoBean.novo}" title="Novo"  image="/resources/img/novo.png" />
-				<h:commandButton rendered="#{pessoaBean.permintirAcesso('administrador')}" value="Remover" action="#{lancamentoBean.deletarPorId}" title="Remover" image="/resources/img/delete.png"  />
+				<h:commandButton rendered="#{pessoaBean.permintirAcesso('admin')}" value="Remover" action="#{lancamentoBean.deletarPorId}" title="Remover" image="/resources/img/delete.png"  />
 				<h:commandButton value="limpar" type="reset" title="Limpar campos" image="/resources/img/limpar.png" />
 			</h:panelGroup>
 		</h:panelGrid>
@@ -76,7 +76,7 @@
 					<h:graphicImage library="img" name="editar.png" title="Editar" />
 				</h:commandLink>
 			
-				<h:commandLink rendered="#{pessoaBean.permintirAcesso('administrador')}" action="#{lancamentoBean.deletarPorId}">
+				<h:commandLink rendered="#{pessoaBean.permintirAcesso('admin')}" action="#{lancamentoBean.deletarPorId}">
 					<f:setPropertyActionListener value="#{l}"
 						target="#{lancamentoBean.lancamento}" />
 						<h:graphicImage library="img" name="deletar.png" title="Excluir" />

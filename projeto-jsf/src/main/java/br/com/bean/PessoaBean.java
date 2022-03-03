@@ -115,7 +115,7 @@ public class PessoaBean implements Serializable {
 		pessoa.setExtensao(extensao);
 		pessoa = daoGeneric.merge(pessoa);
 		carregarPessoas();
-		editar();
+		//editar();
 		motrarMsg("Cadastrado com sucesso!!");
 		return "";
 	}
